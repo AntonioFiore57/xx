@@ -38,7 +38,7 @@ class Domanda:
         self.perm = permutations([0, 1, 2, 3])
         self.lst_perm = list(self.perm)
         self._NUMERO_COMB = len(self.lst_perm)
-
+        self._index_permutazione_risposte = randint(0, self._NUMERO_COMB - 1)
     def dispDomanda(self):
         '''
         schema visualizzazione
@@ -52,7 +52,7 @@ class Domanda:
         '''
         # generiamo un casuale intero tra 0 e self._NUMERO_COMB per scegliere la permutazione
         # dell'ordine delle domande
-        n= randint(0, self._NUMERO_COMB - 1)
+        n= self._index_permutazione_risposte
 
         uscita = f"Livello {self.difficolta}) {self.testoDomanda}\n"
         i=1
