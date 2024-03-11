@@ -52,4 +52,18 @@ class Domanda:
         '''
         # generiamo un casuale intero tra 0 e self._NUMERO_COMB per scegliere la permutazione
         # dell'ordine delle domande
-        i= randint(0, self._NUMERO_COMB - 1)
+        n= randint(0, self._NUMERO_COMB - 1)
+
+        uscita = f"Livello {self.difficolta}) {self.testoDomanda}\n"
+        i=1
+        for k in self.lst_perm[n]:
+            uscita = uscita + str(i) +'. ' + self.risposte[k] +'\n'
+            i += 1
+        uscita = uscita + "\n\n"
+
+        return uscita
+
+
+d1 = Domanda("Lingua ufficiale del Brasile?", 0, ['Portoghese', 'Spagnolo', 'Urdu', 'Klingon'])
+
+print(d1.dispDomanda())
