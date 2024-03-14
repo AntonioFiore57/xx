@@ -111,8 +111,10 @@ for riga in righe:
     nikname = riga.split()
     players.append( (nikname[0], int(nikname[1])  ) )
 
-# non ci preoccupiamo se un nikname è già presente
+MAX_LIVELLO = max(dict_domande.keys())
 
+# non ci preoccupiamo se un nikname è già presente
+# Visualizzare una breve spiegazione delle regole del gioco
 
 nikname = input("Inserisci il tuo nikname: ")
 
@@ -120,3 +122,19 @@ gioco = True
 punti = 0
 livello = 0
 while gioco:
+    numeroDomandeLivello = len(dict_domande[livello])
+    d = dict_domande[livello][randint(0, numeroDomandeLivello-1)]
+    print(d.dispDomanda())
+
+    risposta = int(input("Inserisci la risposta: "))
+    if d.checkRisposta(risposta):
+        print("Risposta corretta!")
+        livello += 1
+        if livello>MAX_LIVELLO:
+            gioco = False
+    else:
+        print(f"Risposta sbagliata! La risposta corretta era: {d.rispostaCorretta + 1}")
+        gioco=False
+    print()
+
+
